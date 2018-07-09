@@ -47,9 +47,9 @@ var (
 	// GenesisSignatureStr hex string of genesis signature
 	GenesisSignatureStr = "eb10468d10054d15f2b6f8946cd46797779aa20a7617ceb4be884189f219bc9a164e56a5b9f7bec392a804ff3740210348d73db77a37adb542a8e08d429ac92700"
 	// GenesisAddressStr genesis address string
-	GenesisAddressStr = "2jBbGxZRGoQG1mqhPBnXnLTxK6oxsTf8os6"
+	GenesisAddressStr = "289xf6jMebKnVfJf3PTnupksaNJ79YnpCDV"
 	// BlockchainPubkeyStr pubic key string
-	BlockchainPubkeyStr = "0328c576d3f420e7682058a981173a4b374c7cc5ff55bf394d3cf57059bbe6456a"
+	BlockchainPubkeyStr = "0245c7b44110a66e975c86ad5b8c2832184c8aa8d0e1fe7a6656fbd7cf312f6eb9"
 	// BlockchainSeckeyStr empty private key string
 	BlockchainSeckeyStr = ""
 

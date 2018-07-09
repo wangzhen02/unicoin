@@ -21,7 +21,7 @@ import (
 	"github.com/skycoin/skycoin/src/wallet"
 )
 
-const configuredHost = "127.0.0.1:6420"
+const configuredHost = "127.0.0.1:8642"
 
 var mxConfig = muxConfig{host: configuredHost, appLoc: "."}
 

@@ -1,13 +1,13 @@
 {
-    "name": "skycoin",
-    "productName": "Skycoin",
-    "author": "skycoin",
+    "name": "unicoin",
+    "productName": "Unicoin",
+    "author": "unicoin",
     "main": "src/electron-main.js",
     "version": "0.23.0",
-    "description": "skycoin wallet",
+    "description": "unicoin wallet",
     "license": "MIT",
     "build": {
-        "appId": "org.skycoin.skycoin",
+        "appId": "org.unicoin.unicoin",
         "nsis": {
             "oneClick": false,
             "allowToChangeInstallationDirectory": true
@@ -56,7 +56,7 @@
                 ]
             },
             {
-                "from": "./skycoin/",
+                "from": "./unicoin/",
                 "to": "./app/dist/"
             }
         ],

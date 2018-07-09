@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private walletSubscription: Subscription;
 
   get balance() {
-    if (this.price === null) { return 'loading..'; }
+    if (this.price === null) { return 'loading price..'; }
     const balance = Math.round(this.coins * this.price * 100) / 100;
     return '$' + balance.toFixed(2) + ' ($' + (Math.round(this.price * 100) / 100) + ')';
   }

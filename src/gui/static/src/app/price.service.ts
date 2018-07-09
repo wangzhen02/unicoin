@@ -11,7 +11,7 @@ export class PriceService {
   constructor(
     private http: Http,
   ) {
-    this.http.get('https://api.coinmarketcap.com/v1/ticker/skycoin/')
+    this.http.get('https://api.coinmarketcap.com/v1/ticker/unicoin/')
       .map(response => response.json()[0])
       .subscribe(data => this.price.next(data.price_usd));
   }

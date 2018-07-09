@@ -19,14 +19,14 @@ require('electron-context-menu')({});
 
 global.eval = function() { throw new Error('bad!!'); }
 
-const defaultURL = 'http://127.0.0.1:6420/';
+const defaultURL = 'http://127.0.0.1:8642/';
 let currentURL;
 
 // Force everything localhost, in case of a leak
 app.commandLine.appendSwitch('host-rules', 'MAP * 127.0.0.1, EXCLUDE api.coinmarketcap.com, api.github.com');
 app.commandLine.appendSwitch('ssl-version-fallback-min', 'tls1.2');
 app.commandLine.appendSwitch('--no-proxy-server');
-app.setAsDefaultProtocolClient('skycoin');
+app.setAsDefaultProtocolClient('unicoin');
 
 
 
@@ -34,35 +34,35 @@ app.setAsDefaultProtocolClient('skycoin');
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
-var skycoin = null;
+var unicoin = null;
 
-function startSkycoin() {
-  console.log('Starting skycoin from electron');
+function startUnicoin() {
+  console.log('Starting unicoin from electron');
 
-  if (skycoin) {
-    console.log('Skycoin already running');
-    app.emit('skycoin-ready');
+  if (unicoin) {
+    console.log('Unicoin already running');
+    app.emit('unicoin-ready');
     return
   }
 
   var reset = () => {
-    skycoin = null;
+    unicoin = null;
   }
 
-  // Resolve skycoin binary location
+  // Resolve unicoin binary location
   var appPath = app.getPath('exe');
   var exe = (() => {
         switch (process.platform) {
   case 'darwin':
-    return path.join(appPath, '../../Resources/app/skycoin');
+    return path.join(appPath, '../../Resources/app/unicoin');
   case 'win32':
     // Use only the relative path on windows due to short path length
     // limits
-    return './resources/app/skycoin.exe';
+    return './resources/app/unicoin.exe';
   case 'linux':
-    return path.join(path.dirname(appPath), './resources/app/skycoin');
+    return path.join(path.dirname(appPath), './resources/app/unicoin');
   default:
-    return './resources/app/skycoin';
+    return './resources/app/unicoin';
   }
 })()
 
@@ -80,14 +80,14 @@ function startSkycoin() {
     // broken (automatically generated certs do not work):
     // '-web-interface-https=true',
   ]
-  skycoin = childProcess.spawn(exe, args);
+  unicoin = childProcess.spawn(exe, args);
 
-  skycoin.on('error', (e) => {
-    dialog.showErrorBox('Failed to start skycoin', e.toString());
+  unicoin.on('error', (e) => {
+    dialog.showErrorBox('Failed to start unicoin', e.toString());
     app.quit();
   });
 
-  skycoin.stdout.on('data', (data) => {
+  unicoin.stdout.on('data', (data) => {
     console.log(data.toString());
     // Scan for the web URL string
     if (currentURL) {
@@ -99,22 +99,22 @@ function startSkycoin() {
       return
     }
     currentURL = defaultURL;
-    app.emit('skycoin-ready', { url: currentURL });
+    app.emit('unicoin-ready', { url: currentURL });
   });
 
-  skycoin.stderr.on('data', (data) => {
+  unicoin.stderr.on('data', (data) => {
     console.log(data.toString());
   });
 
-  skycoin.on('close', (code) => {
-    // log.info('Skycoin closed');
-    console.log('Skycoin closed');
+  unicoin.on('close', (code) => {
+    // log.info('Unicoin closed');
+    console.log('Unicoin closed');
     reset();
   });
 
-  skycoin.on('exit', (code) => {
-    // log.info('Skycoin exited');
-    console.log('Skycoin exited');
+  unicoin.on('exit', (code) => {
+    // log.info('Unicoin exited');
+    console.log('Unicoin exited');
     reset();
   });
 }
@@ -137,7 +137,7 @@ function createWindow(url) {
   win = new BrowserWindow({
     width: 1200,
     height: 900,
-    title: 'Skycoin',
+    title: 'Unicoin',
     icon: iconPath,
     nodeIntegration: false,
     webPreferences: {
@@ -151,7 +151,7 @@ function createWindow(url) {
 
   const ses = win.webContents.session
   ses.clearCache(function () {
-    console.log('Cleared the caching of the skycoin wallet.');
+    console.log('Cleared the caching of the unicoin wallet.');
   });
 
   ses.clearStorageData([],function(){
@@ -178,9 +178,9 @@ function createWindow(url) {
 
   // create application's main menu
   var template = [{
-    label: "Skycoin",
+    label: "Unicoin",
     submenu: [
-      { label: "About Skycoin", selector: "orderFrontStandardAboutPanel:" },
+      { label: "About Unicoin", selector: "orderFrontStandardAboutPanel:" },
       { type: "separator" },
       { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); } }
     ]
@@ -221,9 +221,9 @@ if (alreadyRunning) {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', startSkycoin);
+app.on('ready', startUnicoin);
 
-app.on('skycoin-ready', (e) => {
+app.on('unicoin-ready', (e) => {
   createWindow(e.url);
 });
 
@@ -245,8 +245,8 @@ app.on('activate', () => {
 });
 
 app.on('will-quit', () => {
-  if (skycoin) {
-    skycoin.kill('SIGINT');
+  if (unicoin) {
+    unicoin.kill('SIGINT');
   }
 });
 

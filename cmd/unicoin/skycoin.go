@@ -30,7 +30,7 @@ import (
 
 var (
 	// Version of the node. Can be set by -ldflags
-	Version = "0.1.0"
+	Version = "0.1.1"
 	// Commit ID. Can be set by -ldflags
 	Commit = ""
 	// Branch name. Can be set by -ldflags
@@ -45,7 +45,7 @@ var (
 	logger = logging.MustGetLogger("main")
 
 	// GenesisSignatureStr hex string of genesis signature
-	GenesisSignatureStr = "eb10468d10054d15f2b6f8946cd46797779aa20a7617ceb4be884189f219bc9a164e56a5b9f7bec392a804ff3740210348d73db77a37adb542a8e08d429ac92700"
+	GenesisSignatureStr = "1d5fd761033980da1af3d5a79815471d8f315966985c42b0de086221866544ac4bf8003a5f0e61f1228976d646a7fe9ca5bd992c78aa4764fdd3a26d30aa76f400"
 	// GenesisAddressStr genesis address string
 	GenesisAddressStr = "289xf6jMebKnVfJf3PTnupksaNJ79YnpCDV"
 	// BlockchainPubkeyStr pubic key string
@@ -54,13 +54,13 @@ var (
 	BlockchainSeckeyStr = ""
 
 	// GenesisTimestamp genesis block create unix time
-	GenesisTimestamp uint64 = 1426562704
+	GenesisTimestamp uint64 = 1426562603
 	// GenesisCoinVolume represents the coin capacity
-	GenesisCoinVolume uint64 = 100e12
+	GenesisCoinVolume uint64 = 7500e12
 
 	// DefaultConnections the default trust node addresses
 	DefaultConnections = []string{
-		"112.74.168.2:8222",
+		"112.74.168.2:5999",
 	}
 )
 
@@ -251,11 +251,11 @@ var devConfig = Config{
 	// public interface
 	Address: "",
 	//gnet uses this for TCP incoming and outgoing
-	Port: 8222,
+	Port: 5999,
 	// MaxOutgoingConnections is the maximum outgoing connections allowed.
 	MaxOutgoingConnections: 16,
 	DownloadPeerList:       false,
-	PeerListURL:            "https://downloads.skycoin.net/blockchain/peers.txt",
+	PeerListURL:            "https://downloads.unicoin.net/blockchain/peers.txt",
 	// How often to make outgoing connections, in seconds
 	OutgoingConnectionsRate: time.Second * 5,
 	PeerlistSize:            65535,
@@ -263,7 +263,7 @@ var devConfig = Config{
 	//AddressVersion: "test",
 	// Remote web interface
 	WebInterface:             true,
-	WebInterfacePort:         8642,
+	WebInterfacePort:         5319,
 	WebInterfaceAddr:         "127.0.0.1",
 	WebInterfaceCert:         "",
 	WebInterfaceKey:          "",
@@ -271,7 +271,7 @@ var devConfig = Config{
 	PrintWebInterfaceAddress: false,
 
 	RPCInterface:     true,
-	RPCInterfacePort: 8652,
+	RPCInterfacePort: 5329,
 	RPCInterfaceAddr: "127.0.0.1",
 	RPCThreadNum:     5,
 
@@ -816,8 +816,8 @@ func InitTransaction() coin.Transaction {
 	}
 
 	// 1 million per address, measured in droplets
-	if visor.DistributionAddressInitialBalance != 1e6 {
-		log.Panic("visor.DistributionAddressInitialBalance expected to be 1e6*1e6")
+	if visor.DistributionAddressInitialBalance != 75e6 {
+		log.Panic("visor.DistributionAddressInitialBalance expected to be 75e6*1e6")
 	}
 
 	for i := range addrs {

@@ -3,7 +3,7 @@
     "productName": "Unicoin",
     "author": "unicoin",
     "main": "src/electron-main.js",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "unicoin wallet",
     "license": "MIT",
     "build": {

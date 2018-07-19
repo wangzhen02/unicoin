@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleExecutable</key>
-    <string>Unicoin</string>
+    <string>Unitoken</string>
     <key>CFBundleIdentifier</key>
-    <string>org.unicoin.Unicoin</string>
+    <string>org.unitoken.Unitoken</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>Unicoin</string>
+    <string>Unitoken</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>LSMinimumSystemVersion</key>
@@ -26,10 +26,10 @@
     <array>
       <dict>
         <key>CFBundleURLName</key>
-        <string>Unicoin</string>
+        <string>Unitoken</string>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>unicoin</string>
+          <string>unitoken</string>
         </array>
       </dict>
     </array>

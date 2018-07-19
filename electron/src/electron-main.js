@@ -26,7 +26,7 @@ let currentURL;
 app.commandLine.appendSwitch('host-rules', 'MAP * 127.0.0.1, EXCLUDE api.coinmarketcap.com, api.github.com');
 app.commandLine.appendSwitch('ssl-version-fallback-min', 'tls1.2');
 app.commandLine.appendSwitch('--no-proxy-server');
-app.setAsDefaultProtocolClient('unicoin');
+app.setAsDefaultProtocolClient('unitoken');
 
 
 
@@ -34,35 +34,35 @@ app.setAsDefaultProtocolClient('unicoin');
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
-var unicoin = null;
+var unitoken = null;
 
-function startUnicoin() {
-  console.log('Starting unicoin from electron');
+function startUnitoken() {
+  console.log('Starting unitoken from electron');
 
-  if (unicoin) {
-    console.log('Unicoin already running');
-    app.emit('unicoin-ready');
+  if (unitoken) {
+    console.log('Unitoken already running');
+    app.emit('unitoken-ready');
     return
   }
 
   var reset = () => {
-    unicoin = null;
+    unitoken = null;
   }
 
-  // Resolve unicoin binary location
+  // Resolve unitoken binary location
   var appPath = app.getPath('exe');
   var exe = (() => {
         switch (process.platform) {
   case 'darwin':
-    return path.join(appPath, '../../Resources/app/unicoin');
+    return path.join(appPath, '../../Resources/app/unitoken');
   case 'win32':
     // Use only the relative path on windows due to short path length
     // limits
-    return './resources/app/unicoin.exe';
+    return './resources/app/unitoken.exe';
   case 'linux':
-    return path.join(path.dirname(appPath), './resources/app/unicoin');
+    return path.join(path.dirname(appPath), './resources/app/unitoken');
   default:
-    return './resources/app/unicoin';
+    return './resources/app/unitoken';
   }
 })()
 
@@ -80,14 +80,14 @@ function startUnicoin() {
     // broken (automatically generated certs do not work):
     // '-web-interface-https=true',
   ]
-  unicoin = childProcess.spawn(exe, args);
+  unitoken = childProcess.spawn(exe, args);
 
-  unicoin.on('error', (e) => {
-    dialog.showErrorBox('Failed to start unicoin', e.toString());
+  unitoken.on('error', (e) => {
+    dialog.showErrorBox('Failed to start unitoken', e.toString());
     app.quit();
   });
 
-  unicoin.stdout.on('data', (data) => {
+  unitoken.stdout.on('data', (data) => {
     console.log(data.toString());
     // Scan for the web URL string
     if (currentURL) {
@@ -99,22 +99,22 @@ function startUnicoin() {
       return
     }
     currentURL = defaultURL;
-    app.emit('unicoin-ready', { url: currentURL });
+    app.emit('unitoken-ready', { url: currentURL });
   });
 
-  unicoin.stderr.on('data', (data) => {
+  unitoken.stderr.on('data', (data) => {
     console.log(data.toString());
   });
 
-  unicoin.on('close', (code) => {
-    // log.info('Unicoin closed');
-    console.log('Unicoin closed');
+  unitoken.on('close', (code) => {
+    // log.info('Unitoken closed');
+    console.log('Unitoken closed');
     reset();
   });
 
-  unicoin.on('exit', (code) => {
-    // log.info('Unicoin exited');
-    console.log('Unicoin exited');
+  unitoken.on('exit', (code) => {
+    // log.info('Unitoken exited');
+    console.log('Unitoken exited');
     reset();
   });
 }
@@ -137,7 +137,7 @@ function createWindow(url) {
   win = new BrowserWindow({
     width: 1200,
     height: 900,
-    title: 'Unicoin',
+    title: 'Unitoken',
     icon: iconPath,
     nodeIntegration: false,
     webPreferences: {
@@ -151,7 +151,7 @@ function createWindow(url) {
 
   const ses = win.webContents.session
   ses.clearCache(function () {
-    console.log('Cleared the caching of the unicoin wallet.');
+    console.log('Cleared the caching of the unitoken wallet.');
   });
 
   ses.clearStorageData([],function(){
@@ -178,9 +178,9 @@ function createWindow(url) {
 
   // create application's main menu
   var template = [{
-    label: "Unicoin",
+    label: "Unitoken",
     submenu: [
-      { label: "About Unicoin", selector: "orderFrontStandardAboutPanel:" },
+      { label: "About Unitoken", selector: "orderFrontStandardAboutPanel:" },
       { type: "separator" },
       { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); } }
     ]
@@ -221,9 +221,9 @@ if (alreadyRunning) {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', startUnicoin);
+app.on('ready', startUnitoken);
 
-app.on('unicoin-ready', (e) => {
+app.on('unitoken-ready', (e) => {
   createWindow(e.url);
 });
 
@@ -245,8 +245,8 @@ app.on('activate', () => {
 });
 
 app.on('will-quit', () => {
-  if (unicoin) {
-    unicoin.kill('SIGINT');
+  if (unitoken) {
+    unitoken.kill('SIGINT');
   }
 });
 

@@ -14,7 +14,7 @@ export class TellerStatusPipe implements PipeTransform {
       case 'waiting_deposit':
         return 'Waiting for Bitcoin deposit';
       case 'waiting_send':
-        return 'Waiting to send Unicoin';
+        return 'Waiting to send Unitoken';
       default:
         return 'Unknown';
     }

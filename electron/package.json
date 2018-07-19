@@ -1,13 +1,13 @@
 {
-    "name": "unicoin",
-    "productName": "Unicoin",
-    "author": "unicoin",
+    "name": "unitoken",
+    "productName": "Unitoken",
+    "author": "unitoken",
     "main": "src/electron-main.js",
-    "version": "0.1.1",
-    "description": "unicoin wallet",
+    "version": "0.1.2",
+    "description": "unitoken wallet",
     "license": "MIT",
     "build": {
-        "appId": "org.unicoin.unicoin",
+        "appId": "org.unitoken.unitoken",
         "nsis": {
             "oneClick": false,
             "allowToChangeInstallationDirectory": true
@@ -56,7 +56,7 @@
                 ]
             },
             {
-                "from": "./unicoin/",
+                "from": "./unitoken/",
                 "to": "./app/dist/"
             }
         ],

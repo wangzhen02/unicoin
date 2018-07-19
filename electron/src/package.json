@@ -1,7 +1,7 @@
 {
   "main": "electron-main.js",
   "license": "MIT",
-  "description": "unicoin wallet",
+  "description": "unitoken wallet",
   "dependencies": {
     "electron-debug": "^1.0.1",
     "electron-log": "^1.2.2",

@@ -806,7 +806,7 @@ func main() {
 func InitTransaction() coin.Transaction {
 	var tx coin.Transaction
 
-	output := cipher.MustSHA256FromHex("043836eb6f29aaeb8b9bfce847e07c159c72b25ae17d291f32125e7f1912e2a0")
+	output := cipher.MustSHA256FromHex("0d9bd842e96a3bfcb517dc45e70424a4c786126f2bcc51a4f18d9db54bf9d676")
 	tx.PushInput(output)
 
 	addrs := visor.GetDistributionAddresses()

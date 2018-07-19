@@ -45,7 +45,7 @@ var (
 	logger = logging.MustGetLogger("main")
 
 	// GenesisSignatureStr hex string of genesis signature
-	GenesisSignatureStr = "1d5fd761033980da1af3d5a79815471d8f315966985c42b0de086221866544ac4bf8003a5f0e61f1228976d646a7fe9ca5bd992c78aa4764fdd3a26d30aa76f400"
+	GenesisSignatureStr = "4e09cb5fce620abccafbc39b0361595986c5b32ab7cb22a0a0986720c6708fa41cabd47ceae7d2723d53536ecece7f33cd55b9c6ddc5e1cf78522da8aede512d00"
 	// GenesisAddressStr genesis address string
 	GenesisAddressStr = "289xf6jMebKnVfJf3PTnupksaNJ79YnpCDV"
 	// BlockchainPubkeyStr pubic key string

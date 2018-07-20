@@ -16,7 +16,7 @@ const (
 
 	// InitialUnlockedCount is the initial number of unlocked addresses
 	// InitialUnlockedCount uint64 = 25
-	InitialUnlockedCount uint64 = 0
+	InitialUnlockedCount uint64 = 100
 
 	// UnlockAddressRate is the number of addresses to unlock per unlock time interval
 	// UnlockAddressRate uint64 = 5

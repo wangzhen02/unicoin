@@ -755,7 +755,14 @@ func Run(c *Config) {
 	       log.Panic(err)
 	   }
 	*/
-
+	/*
+	   time.Sleep(5)
+	   tx := InitTransaction()
+	   _, _, err = d.Visor.InjectTransaction(tx)
+	   if err != nil {
+	       log.Panic(err)
+	   }
+	*/
 	/*
 	   //first transaction
 	   if c.RunMaster == true {
@@ -826,7 +833,7 @@ func InitTransaction() coin.Transaction {
 	}
 	/*
 		seckeys := make([]cipher.SecKey, 1)
-		seckey := ""
+		seckey := "a7af9c9dd1fd4fbaa323492ead4e71e0422ce860bf6888424064662d6b2462ca"
 		seckeys[0] = cipher.MustSecKeyFromHex(seckey)
 		tx.SignInputs(seckeys)
 	*/

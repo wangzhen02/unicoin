@@ -6,7 +6,7 @@ import (
 
 const (
 	// MaxCoinSupply is the maximum supply of skycoins
-	MaxCoinSupply uint64 = 1e8 // 100,000,000 million
+	MaxCoinSupply uint64 = 75e8 // 7,500,000,000 million
 
 	// DistributionAddressesTotal is the number of distribution addresses
 	DistributionAddressesTotal uint64 = 100
@@ -16,17 +16,16 @@ const (
 
 	// InitialUnlockedCount is the initial number of unlocked addresses
 	// InitialUnlockedCount uint64 = 25
-	InitialUnlockedCount uint64 = 50
+	InitialUnlockedCount uint64 = 0
 
 	// UnlockAddressRate is the number of addresses to unlock per unlock time interval
 	// UnlockAddressRate uint64 = 5
-	UnlockAddressRate uint64 = 10
+	UnlockAddressRate uint64 = 0
 
 	// UnlockTimeInterval is the distribution address unlock time interval, measured in seconds
 	// Once the InitialUnlockedCount is exhausted,
 	// UnlockAddressRate addresses will be unlocked per UnlockTimeInterval
-	// UnlockTimeInterval uint64 = 60 * 60 * 24 * 365 // 1 year
-	UnlockTimeInterval uint64 = 60 * 10 // 10 minute
+	UnlockTimeInterval uint64 = 60 * 60 * 24 * 365 // 1 year
 )
 
 func init() {

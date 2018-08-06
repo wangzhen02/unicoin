@@ -45,7 +45,7 @@ var (
 	logger = logging.MustGetLogger("main")
 
 	// GenesisSignatureStr hex string of genesis signature
-	GenesisSignatureStr = "d399d40fea1e7089ec1fdab0f3fdc906b7757cc7923b0362b69d6f5885086b8c49306197d2a0b6ea4a4b9055c00ae31ab4e4d77a22a7f95aad8b2301ee64002900"
+	GenesisSignatureStr = "3cfc2c1bcd6227f60009c1f31f5f8e8029b8d831bb7bedc3d31bb762f33c67e64b859b708014385b9b27f333d6b5d805154080ef1ed83fa6037391cb9be118bd00"
 	// GenesisAddressStr genesis address string
 	GenesisAddressStr = "289xf6jMebKnVfJf3PTnupksaNJ79YnpCDV"
 	// BlockchainPubkeyStr pubic key string
@@ -118,7 +118,7 @@ type Config struct {
 	// If true, print the configured client web interface address and exit
 	PrintWebInterfaceAddress bool
 
-	// Data directory holds app data -- defaults to ~/.skycoin
+	// Data directory holds app data -- defaults to ~/.unitoken
 	DataDirectory string
 	// GUI directory contains assets for the html gui
 	GUIDirectory string
@@ -196,8 +196,8 @@ func (c *Config) register() {
 
 	flag.BoolVar(&c.LaunchBrowser, "launch-browser", c.LaunchBrowser, "launch system default webbrowser at client startup")
 	flag.BoolVar(&c.PrintWebInterfaceAddress, "print-web-interface-address", c.PrintWebInterfaceAddress, "print configured web interface address and exit")
-	flag.StringVar(&c.DataDirectory, "data-dir", c.DataDirectory, "directory to store app data (defaults to ~/.skycoin)")
-	flag.StringVar(&c.DBPath, "db-path", c.DBPath, "path of database file (defaults to ~/.skycoin/data.db)")
+	flag.StringVar(&c.DataDirectory, "data-dir", c.DataDirectory, "directory to store app data (defaults to ~/.unitoken)")
+	flag.StringVar(&c.DBPath, "db-path", c.DBPath, "path of database file (defaults to ~/.unitoken/data.db)")
 	flag.BoolVar(&c.DBReadOnly, "db-read-only", c.DBReadOnly, "open bolt db read-only")
 	flag.StringVar(&c.ConnectTo, "connect-to", c.ConnectTo, "connect to this ip only")
 	flag.BoolVar(&c.ProfileCPU, "profile-cpu", c.ProfileCPU, "enable cpu profiling")
@@ -276,8 +276,8 @@ var devConfig = Config{
 	RPCThreadNum:     5,
 
 	LaunchBrowser: false,
-	// Data directory holds app data -- defaults to ~/.skycoin
-	DataDirectory: filepath.Join(home, ".skycoin"),
+	// Data directory holds app data -- defaults to ~/.unitoken
+	DataDirectory: filepath.Join(home, ".unitoken"),
 	// Web GUI static resources
 	GUIDirectory: "./src/gui/static/",
 	// Logging
